@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const rate = rateLimit({ windowMs:600000 , max:10} );
+const rate = rateLimit({ windowMs:120000 , max:10} );
 
 app.use(cors({
   origin: "http://localhost:3000"
