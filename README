@@ -1,0 +1,18 @@
+The project isnt being deployed yet so here is the steps to run the project.
+
+What you need installed:
+XAMPP (we use it for Apache and MySQL)
+Node.js
+Python 3
+ngrok
+VS Code (any editor works, but this is what we used)
+
+First start the apache and MySQL from  xampp.
+Open the frontend and the backend folders in two separate VS Code windows. In each one, open a terminal and run:
+The chatbot is hosted on Landbot, so it can't reach our backend on localhost directly. We use ngrok to give the backend a temporary public URL.
+open ngrok and run this command ngrok http 5001. 
+Open the ml folder and type in terminal py ml_api.py.
+
+Why isn't it deployed?
+We plan to replace the Landbot chatbot with one we build ourselves using NLP, so the student can actually talk to it in normal language instead of clicking through buttons. 
+We'd rather deploy once with the new chatbot than deploy twice.
