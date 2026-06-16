@@ -1,0 +1,53 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #1a1d29;
+  color: #ffffff;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex-shrink: 0;
+}
+
+.sidebar__brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar__link {
+  color: #9ca3af;
+  text-decoration: none;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar__link:hover {
+  background: #252938;
+  color: #ffffff;
+}
+
+.sidebar__link.active {
+  background: #4F6EF7;
+  color: #ffffff;
+}
+
+.dashboard-content {
+  flex: 1;
+  background: #f7f8fb;
+  padding: 2rem;
+  overflow-y: auto;
+}
