@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const rate = rateLimit({ windowMs:600000 , max:10} );
+const rate = rateLimit({ windowMs:600000 , max:1000} );
 
 app.use(cors({
   origin: "http://localhost:3000"
@@ -94,7 +94,9 @@ app.get("/student/:student_id", async (req, res) => {
   try {
     const stud = await query("SELECT s.name, s.email, bs.section_name FROM student s JOIN baccalaureate_section bs ON s.section_id= bs.section_id WHERE s.student_id=?", 
     [req.params.student_id]);
-  
+    if (stud.length === 0) {
+    return res.status(404).json({ error: "Student not found" });
+}
 
     const studGrad = await query("SELECT g.grade, sg.subject_name FROM grades g JOIN subject sg ON g.subject_id=sg.subject_id WHERE g.student_id=?",
     [req.params.student_id]);
@@ -110,7 +112,6 @@ app.get("/student/:student_id", async (req, res) => {
     interest: studInt,
     majors: maj,
     });
-
 
 
   } catch (error) {

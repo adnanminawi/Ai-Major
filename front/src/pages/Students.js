@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Students(){
@@ -36,6 +37,7 @@ function Students(){
                 <th>Grades</th>
                 <th>Interest</th>
                 <th>Major</th>
+                <th>Profile</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +49,7 @@ function Students(){
                 <td>{s.grades.map(g => `${g.subject_name}: ${g.grade}`).join(", ")}</td>
                 <td>{s.interests.map(i => i.interest_name).join(", ")}</td>
                 <td>{s.majors.map(m => `${m.major_name}: ${m.score}`).join(", ")}</td>
+                <td><Link to ={`/dashboard/students/${s.student_id}`}>View</Link></td>
                 </tr>))}
             </tbody>
         </table>
