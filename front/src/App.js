@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Students from "./pages/Students";
 import DashboardLayout from "./components/DashboardLayout";
+import StudentProfile from "./pages/StudentProfile";
 import "./index.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
        <Route path="/dashboard" element={<DashboardLayout />}>
   <Route index element={<Dashboard />} />        {/* shows at /dashboard */}
   <Route path="students" element={<Students />} /> {/* shows at /dashboard/students */}
+  <Route path="students/:student_id" element={<StudentProfile />} /> {/* show the student profile*/}
 </Route>
       </Routes>
     </Router>
