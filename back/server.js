@@ -120,7 +120,20 @@ app.get("/student/:student_id", async (req, res) => {
   }
 });
 
+app.get("/stats" , async(req,res)=>{
+try{
+const total_stud = await query("SELECT COUNT(*) AS total FROM student");
+const total_sec= await query("SELECT bs.section_name, COUNT(*) AS count FROM student s JOIN baccalaureate_section bs ON s.section_id= bs.section_id GROUP BY bs.section_name");
 
+return res.json({
+  total_students: total_stud[0].total,
+  sections: total_sec,
+})
+}catch(error){
+console.error("Error:", error.message);
+    return res.status(500).json({ error: "Internal server error" });
+}
+})
 app.post("/student", checkApiKey, async (req, res) => {
  if (!req.body.section_name) {
   return res.json({
