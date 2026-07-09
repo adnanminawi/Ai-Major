@@ -1,3 +1,29 @@
+An AI-powered university major recommendation system for Lebanese baccalaureate students. A chatbot collects a student's grades, interests, and academic section (GS, LS, or ES),
+and a machine-learning model returns the top 3 recommended majors with confidence scores.
+Features
+
+
+Conversational intake — a chatbot (Landbot) guides students through grades, interests, and section selection
+ML-powered recommendations — top 3 majors ranked with confidence percentages, ~95% accuracy on 50,000 synthetic records across the three Lebanese baccalaureate sections (GS, LS, ES)
+Real-time results — predictions delivered back through the chat flow instantly
+Hardened backend — production-style API security
+
+Frontend: React
+Backend: Node.js / Express — 4 REST APIs over a normalized 10-table MySQL database
+ML service: Python / Flask serving a Scikit-learn pipeline (preprocessing, feature engineering, cross-validation)
+Chatbot: Landbot, connected to the backend through an ngrok tunnel during development
+
+Backend security
+
+MySQL accessed through a least-privilege user (no root)
+Credentials and secrets in environment variables (.env, never committed)
+CORS restricted to the frontend origin only
+Rate limiting (10 requests per 10 minutes per client)
+API-key middleware — the chatbot sends an x-api-key header; requests without a valid key get 401 Unauthorized
+Sanitized errors — clients receive a generic error while full details are logged server-side
+
+
+
 The project isnt being deployed yet so here is the steps to run the project.
 
 What you need installed:
